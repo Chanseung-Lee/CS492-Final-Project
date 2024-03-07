@@ -4,15 +4,95 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:id="@+id/textViewRecipeName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:textSize="16sp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <!-- Header Section -->
+        <ImageView
+            android:id="@+id/mealImage"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/meal_placeholder" />
+
+        <TextView
+            android:id="@+id/mealName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/mealImage"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:paddingTop="8dp"
+            android:text="Meal Name" />
+
+        <TextView
+            android:id="@+id/mealDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/mealName"
+            android:text="Category · Area"
+            android:textSize="16sp" />
+
+        <!-- Ingredients Section -->
+        <TextView
+            android:id="@+id/ingredientsHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/mealDetails"
+            android:text="Ingredients"
+            android:textStyle="bold"
+            android:paddingTop="16dp"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:id="@+id/ingredientsList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ingredientsHeader"
+            android:orientation="vertical"
+            android:paddingTop="8dp">
+            <!-- Dynamically add ingredient views here -->
+        </LinearLayout>
+
+        <!-- Instructions Section -->
+        <TextView
+            android:id="@+id/instructionsHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ingredientsList"
+            android:text="Instructions"
+            android:textStyle="bold"
+            android:paddingTop="16dp"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/instructionsText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/instructionsHeader"
+            android:text="Cooking Instructions..."
+            android:paddingTop="8dp" />
+
+        <!-- Additional Information Section -->
+        <TextView
+            android:id="@+id/additionalInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/instructionsText"
+            android:text="Tags, Source, YouTube Link"
+            android:paddingTop="16dp" />
+
+        <!-- Footer Section -->
+        <TextView
+            android:id="@+id/footerText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/additionalInfo"
+            android:text="Last Modified: "
+            android:paddingTop="16dp" />
+
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
