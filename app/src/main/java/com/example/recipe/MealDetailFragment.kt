@@ -1,5 +1,7 @@
 package com.example.recipe
 
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -21,7 +23,8 @@ class MealDetailFragment : Fragment() {
     private lateinit var textViewMealDetails: TextView
     private lateinit var linearLayoutIngredients: LinearLayout
     private lateinit var textViewInstructions: TextView
-    private lateinit var textViewAdditionalInfo: TextView
+    private lateinit var textViewTags: TextView
+    private lateinit var textViewYouTubeLink: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,7 +43,8 @@ class MealDetailFragment : Fragment() {
         textViewMealDetails = view.findViewById(R.id.mealDetails)
         linearLayoutIngredients = view.findViewById(R.id.ingredientsList)
         textViewInstructions = view.findViewById(R.id.instructionsText)
-        textViewAdditionalInfo = view.findViewById(R.id.additionalInfo)
+        textViewTags = view.findViewById(R.id.tagsText)
+        textViewYouTubeLink = view.findViewById(R.id.youtubeLinkText)
 
         viewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)).get(MealViewModel::class.java)
 
@@ -70,8 +74,19 @@ class MealDetailFragment : Fragment() {
                 // Set Instructions
                 textViewInstructions.text = meal.strInstructions
 
-                // Set Additional Info
-                textViewAdditionalInfo.text = "Tags: ${meal.strTags}\nYouTube: ${meal.strYoutube}"
+                // Set Tags
+                textViewTags.text = "Tags: ${meal.strTags}"
+
+                // Set YouTube Link
+                //val youtubeTextView = view.findViewById<TextView>(R.id.youtubeLinkText)
+                textViewYouTubeLink.apply {
+                    text = "YouTube Link"
+                    paint.isUnderlineText = true
+                    setOnClickListener {
+                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(meal.strYoutube))
+                        startActivity(intent)
+                    }
+                }
             }
         })
 
