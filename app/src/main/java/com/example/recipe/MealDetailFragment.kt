@@ -80,9 +80,26 @@ class MealDetailFragment : Fragment() {
 
     private fun getIngredientsList(meal: Meal): List<String> {
         return listOfNotNull(
-            meal.strIngredient1?.let { "${it}: ${meal.strMeasure1}" },
-            meal.strIngredient2?.let { "${it}: ${meal.strMeasure2}" },
-            // ... Repeat for all ingredients ...
-        ).filter { it.isNotBlank() }
+            if (!meal.strIngredient1.isNullOrBlank()) "${meal.strIngredient1}: ${meal.strMeasure1}" else null,
+            if (!meal.strIngredient2.isNullOrBlank()) "${meal.strIngredient2}: ${meal.strMeasure2}" else null,
+            if (!meal.strIngredient3.isNullOrBlank()) "${meal.strIngredient3}: ${meal.strMeasure3}" else null,
+            if (!meal.strIngredient4.isNullOrBlank()) "${meal.strIngredient4}: ${meal.strMeasure4}" else null,
+            if (!meal.strIngredient5.isNullOrBlank()) "${meal.strIngredient5}: ${meal.strMeasure5}" else null,
+            if (!meal.strIngredient6.isNullOrBlank()) "${meal.strIngredient6}: ${meal.strMeasure6}" else null,
+            if (!meal.strIngredient7.isNullOrBlank()) "${meal.strIngredient7}: ${meal.strMeasure7}" else null,
+            if (!meal.strIngredient8.isNullOrBlank()) "${meal.strIngredient8}: ${meal.strMeasure8}" else null,
+            if (!meal.strIngredient9.isNullOrBlank()) "${meal.strIngredient9}: ${meal.strMeasure9}" else null,
+            if (!meal.strIngredient10.isNullOrBlank()) "${meal.strIngredient10}: ${meal.strMeasure10}" else null,
+            if (!meal.strIngredient11.isNullOrBlank()) "${meal.strIngredient11}: ${meal.strMeasure11}" else null,
+            if (!meal.strIngredient12.isNullOrBlank()) "${meal.strIngredient12}: ${meal.strMeasure12}" else null,
+            if (!meal.strIngredient13.isNullOrBlank()) "${meal.strIngredient13}: ${meal.strMeasure13}" else null,
+            if (!meal.strIngredient14.isNullOrBlank()) "${meal.strIngredient14}: ${meal.strMeasure14}" else null,
+            if (!meal.strIngredient15.isNullOrBlank()) "${meal.strIngredient15}: ${meal.strMeasure15}" else null,
+            if (!meal.strIngredient16.isNullOrBlank()) "${meal.strIngredient16}: ${meal.strMeasure16}" else null,
+            if (!meal.strIngredient17.isNullOrBlank()) "${meal.strIngredient17}: ${meal.strMeasure17}" else null,
+            if (!meal.strIngredient18.isNullOrBlank()) "${meal.strIngredient18}: ${meal.strMeasure18}" else null,
+            if (!meal.strIngredient19.isNullOrBlank()) "${meal.strIngredient19}: ${meal.strMeasure19}" else null,
+            if (!meal.strIngredient20.isNullOrBlank()) "${meal.strIngredient20}: ${meal.strMeasure20}" else null
+        )
     }
 }

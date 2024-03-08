@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        /*
         // Check that the activity is using the layout version with the fragment_container FrameLayout
         if (findViewById<FrameLayout>(R.id.nav_host_fragment) != null) {
 
@@ -31,5 +31,6 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.beginTransaction()
                 .add(R.id.nav_host_fragment, mealDetailFragment).commit()
         }
+        */
     }
 }
