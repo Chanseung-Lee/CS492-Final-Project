@@ -48,15 +48,18 @@ class MealDetailFragment : Fragment() {
 
         viewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)).get(MealViewModel::class.java)
 
+        // Retrieve the meal name from the arguments
+        val mealName = arguments?.getString("mealName") ?: "Arrabiata" // Default value if no argument is passed
+
         viewModel.meals.observe(viewLifecycleOwner, Observer { meals ->
             if (meals.isNotEmpty()) {
-                val meal = meals.first() // Assuming we're displaying the first meal
+                val meal = meals.first() // Use the first meal from the response
 
                 // Load meal image using Glide
                 Glide.with(this)
                     .load(meal.strMealThumb)
-                    .placeholder(R.drawable.meal_placeholder) // Optional: Placeholder image
-                    .error(R.drawable.error_placeholder)     // Optional: Error placeholder image
+                    .placeholder(R.drawable.meal_placeholder)
+                    .error(R.drawable.error_placeholder)
                     .into(imageViewMeal)
 
                 // Set Meal Name and Details
@@ -78,7 +81,6 @@ class MealDetailFragment : Fragment() {
                 textViewTags.text = "Tags: ${meal.strTags}"
 
                 // Set YouTube Link
-                //val youtubeTextView = view.findViewById<TextView>(R.id.youtubeLinkText)
                 textViewYouTubeLink.apply {
                     text = "YouTube Link"
                     paint.isUnderlineText = true
@@ -90,7 +92,8 @@ class MealDetailFragment : Fragment() {
             }
         })
 
-        viewModel.searchMeal("Arrabiata")
+        // Use the retrieved meal name for the API query
+        viewModel.searchMeal(mealName)
     }
 
     private fun getIngredientsList(meal: Meal): List<String> {

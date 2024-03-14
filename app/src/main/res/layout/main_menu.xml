@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <!-- Custom designed square icon with rounded edges -->
+        <TextView
+            android:id="@+id/text_icon_meal"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:gravity="center"
+            android:text="Apple Frangipan Tart"
+            android:textSize="18sp"
+            android:textColor="#4CAF50" />
+        <!-- Add other icons or buttons as needed -->
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
