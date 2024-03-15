@@ -11,13 +11,23 @@
 
         <!-- Custom designed square icon with rounded edges -->
         <TextView
-            android:id="@+id/text_icon_meal"
+            android:id="@+id/text_icon_meal1"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:gravity="center"
             android:text="Apple Frangipan Tart"
             android:textSize="18sp"
             android:textColor="#4CAF50" />
+
+        <TextView
+            android:id="@+id/text_icon_meal2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:gravity="center"
+            android:text="Arrabiata"
+            android:textSize="18sp"
+            android:textColor="#4CAF50" />
+
         <!-- Add other icons or buttons as needed -->
 
     </LinearLayout>

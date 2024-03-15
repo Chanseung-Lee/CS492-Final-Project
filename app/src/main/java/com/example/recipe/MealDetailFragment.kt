@@ -7,12 +7,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 class MealDetailFragment : Fragment() {
 
@@ -94,6 +96,12 @@ class MealDetailFragment : Fragment() {
 
         // Use the retrieved meal name for the API query
         viewModel.searchMeal(mealName)
+
+        // Set up the back button
+        view.findViewById<Button>(R.id.button_back_to_main_menu).setOnClickListener {
+            // Navigate back to the MainMenuFragment
+            findNavController().navigateUp()
+        }
     }
 
     private fun getIngredientsList(meal: Meal): List<String> {

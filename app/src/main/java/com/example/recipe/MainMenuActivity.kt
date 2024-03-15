@@ -24,14 +24,22 @@ class MainMenuFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val mealDetailTextIcon = view.findViewById<TextView>(R.id.text_icon_meal)
-        mealDetailTextIcon.setOnClickListener {
-            // Create a bundle and put the string data into it
-            val bundle = Bundle()
-            bundle.putString("mealName", mealDetailTextIcon.text.toString())
-
-            // Navigate to MealDetailFragment with the bundle
-            findNavController().navigate(R.id.mealDetailFragment, bundle)
+        // Common OnClickListener for all meal text icons
+        val mealClickListener = View.OnClickListener { textView ->
+            val mealName = (textView as TextView).text.toString()
+            navigateToMealDetail(mealName)
         }
+
+        // Assign the listener to each TextView
+        view.findViewById<TextView>(R.id.text_icon_meal1).setOnClickListener(mealClickListener)
+        view.findViewById<TextView>(R.id.text_icon_meal2).setOnClickListener(mealClickListener)
+        // Repeat for other TextViews
+    }
+
+    private fun navigateToMealDetail(mealName: String) {
+        val bundle = Bundle().apply {
+            putString("mealName", mealName)
+        }
+        findNavController().navigate(R.id.mealDetailFragment, bundle)
     }
 }
