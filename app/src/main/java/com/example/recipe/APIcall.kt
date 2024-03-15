@@ -20,6 +20,9 @@ import retrofit2.http.Query
 interface MealApiService {
     @GET("search.php")
     fun searchMeal(@Query("s") mealName: String): Call<MealResponse>
+
+    @GET("random.php")
+    fun getRandomMeal(): Call<MealResponse>
 }
 
 // Retrofit Instance
@@ -38,6 +41,8 @@ object RetrofitInstance {
 class MealViewModel(application: Application) : AndroidViewModel(application) {
     private val _meals = MutableLiveData<List<Meal>>()
     val meals: LiveData<List<Meal>> = _meals
+    private val _randomMealName = MutableLiveData<String>()
+    val randomMealName: LiveData<String> = _randomMealName
 
     fun searchMeal(mealName: String) {
         RetrofitInstance.api.searchMeal(mealName).enqueue(object : Callback<MealResponse> {
@@ -57,6 +62,26 @@ class MealViewModel(application: Application) : AndroidViewModel(application) {
 
             override fun onFailure(call: Call<MealResponse>, t: Throwable) {
                 // Handle failure in calling the API
+                Log.e("MealViewModel", "API call failed: ${t.message}")
+            }
+        })
+    }
+
+    // Function to fetch a random meal
+    fun getRandomMeal() {
+        RetrofitInstance.api.getRandomMeal().enqueue(object : Callback<MealResponse> {
+            override fun onResponse(call: Call<MealResponse>, response: Response<MealResponse>) {
+                if (response.isSuccessful) {
+                    // Extract the list of meals (should be only one) from the response
+                    val mealResponse = response.body()
+                    _meals.postValue(mealResponse?.meals)
+                    Log.d("MealViewModel", "Received random meal")
+                } else {
+                    Log.e("MealViewModel", "Response not successful")
+                }
+            }
+
+            override fun onFailure(call: Call<MealResponse>, t: Throwable) {
                 Log.e("MealViewModel", "API call failed: ${t.message}")
             }
         })
