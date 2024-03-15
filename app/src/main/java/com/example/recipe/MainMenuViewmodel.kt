@@ -26,7 +26,7 @@ class MainMenuViewModel(application: Application) : AndroidViewModel(application
 
     fun fetchRandomMeals(numberOfMeals: Int) {
         val currentTime = System.currentTimeMillis()
-        if (currentTime - lastFetchTime < 15 * 1000) {
+        if (currentTime - lastFetchTime < 30 * 1000) {
             // It's been less than 15 seconds since the last query, so don't fetch new data
             return
         }
