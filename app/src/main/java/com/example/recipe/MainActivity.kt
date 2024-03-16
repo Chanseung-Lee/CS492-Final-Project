@@ -13,6 +13,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import androidx.preference.PreferenceManager
 import com.bumptech.glide.Glide
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -22,6 +23,19 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
+
+        // Retrieve the current state of dark mode from SharedPreferences
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        val isDarkModeEnabled = sharedPreferences.getBoolean("dark_mode", false)
+
+        // Apply dark or light based on stored switch preference at start (first install is light)
+        if (isDarkModeEnabled) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
+
+
         setContentView(R.layout.activity_main)
 
 
