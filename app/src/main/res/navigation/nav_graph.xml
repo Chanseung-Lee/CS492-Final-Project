@@ -24,4 +24,13 @@
             android:id="@+id/action_mealDetailFragment_to_mainMenuFragment"
             app:destination="@id/mainMenuFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/settings"
+        android:label="Settings"
+        android:name="com.example.recipe.SettingsFragment" />
+
+    <action
+        android:id="@+id/navigate_to_settings"
+        app:destination="@+id/settings"/>
 </navigation>
