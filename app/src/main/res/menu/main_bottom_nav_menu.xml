@@ -8,9 +8,14 @@
         />
 
     <item
+        android:id="@+id/refresh_recipes"
+        android:title="New Recipes"
+        android:icon="@drawable/ic_fetch_recipes"
+        />
+
+    <item
         android:id="@+id/settings"
         android:title="Settings"
         android:icon="@drawable/ic_settings_black"
         />
-
 </menu>

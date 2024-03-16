@@ -6,11 +6,15 @@ import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.view.updatePadding
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.preference.PreferenceManager
@@ -21,8 +25,27 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfig: AppBarConfiguration
     override fun onCreate(savedInstanceState: Bundle?) {
-
+        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        val navHostFragment = supportFragmentManager.findFragmentById(
+            R.id.nav_host_fragment
+        ) as NavHostFragment
+        val navController = navHostFragment.navController
+        appBarConfig = AppBarConfiguration(navController.graph)
+
+        val appBar: MaterialToolbar = findViewById(R.id.top_app_bar)
+        setSupportActionBar(appBar)
+        setupActionBarWithNavController(navController, appBarConfig)
+
+        val bottomNav: BottomNavigationView = findViewById(R.id.bottom_nav)
+        bottomNav.setupWithNavController(navController)
+        bottomNav.setOnApplyWindowInsetsListener { view, insets ->
+            view.updatePadding(bottom = 0)
+            insets
+        }
+
 
         // Retrieve the current state of dark mode from SharedPreferences
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
@@ -36,17 +59,7 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        setContentView(R.layout.activity_main)
 
-
-        val navHostFragment = supportFragmentManager.findFragmentById(
-            R.id.nav_host_fragment
-        ) as NavHostFragment
-        val navController = navHostFragment.navController
-
-
-        val bottomNav: BottomNavigationView = findViewById(R.id.bottom_nav)
-        bottomNav.setupWithNavController(navController)
 
 
 
@@ -68,5 +81,10 @@ class MainActivity : AppCompatActivity() {
                 .add(R.id.nav_host_fragment, mealDetailFragment).commit()
         }
         */
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        val navController = findNavController(R.id.nav_host_fragment)
+        return navController.navigateUp(appBarConfig) || super.onSupportNavigateUp()
     }
 }
