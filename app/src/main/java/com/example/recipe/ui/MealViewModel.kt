@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.recipe.data.Meal
 import com.example.recipe.data.MealDetailRepository
-import com.example.recipe.data.MealResponse
 import com.example.recipe.data.MealService
 import kotlinx.coroutines.launch
 

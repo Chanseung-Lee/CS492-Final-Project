@@ -4,22 +4,15 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.recipe.data.Meal
 import com.example.recipe.R
-import com.example.recipe.data.MealResponse
 
 class MealDetailFragment : Fragment(R.layout.fragment_meal_detail) {
     private val viewModel: MealViewModel by viewModels()
@@ -33,14 +26,6 @@ class MealDetailFragment : Fragment(R.layout.fragment_meal_detail) {
     private lateinit var textViewInstructions: TextView
     private lateinit var textViewTags: TextView
     private lateinit var textViewYouTubeLink: TextView
-
-//    override fun onCreateView(
-//        inflater: LayoutInflater, container: ViewGroup?,
-//        savedInstanceState: Bundle?
-//    ): View? {
-//        // Inflate the layout for this fragment
-//        return inflater.inflate(R.layout.fragment_meal_detail, container, false)
-//    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
