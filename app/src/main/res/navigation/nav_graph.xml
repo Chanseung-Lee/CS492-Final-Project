@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/mainMenuFragment"
-        android:name="com.example.recipe.MainMenuFragment"
-        android:label="fragment_main_menu"
-        tools:layout="@layout/main_menu">
+        android:name="com.example.recipe.ui.MainMenuFragment"
+        android:label="Health Meal"
+        tools:layout="@layout/fragment_main_menu">
         <action
             android:id="@+id/action_mainMenuFragment_to_mealDetailFragment"
             app:destination="@id/mealDetailFragment" />
@@ -17,9 +17,9 @@
 
     <fragment
         android:id="@+id/mealDetailFragment"
-        android:name="com.example.recipe.MealDetailFragment"
-        android:label="fragment_meal_detail"
-        tools:layout="@layout/activity_meal">
+        android:name="com.example.recipe.ui.MealDetailFragment"
+        android:label="Selected Recipe"
+        tools:layout="@layout/fragment_meal_detail">
         <action
             android:id="@+id/action_mealDetailFragment_to_mainMenuFragment"
             app:destination="@id/mainMenuFragment" />
@@ -28,7 +28,7 @@
     <fragment
         android:id="@+id/settings"
         android:label="Settings"
-        android:name="com.example.recipe.SettingsFragment" />
+        android:name="com.example.recipe.ui.SettingsFragment" />
 
     <action
         android:id="@+id/navigate_to_settings"

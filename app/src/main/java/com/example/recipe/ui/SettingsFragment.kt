@@ -1,4 +1,4 @@
-package com.example.recipe
+package com.example.recipe.ui
 
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
 import androidx.preference.SwitchPreference
+import com.example.recipe.R
 
 class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedPreferenceChangeListener {
 
