@@ -1,8 +1,11 @@
-package com.example.recipe
+package com.example.recipe.data
 
-data class MealResponse(val meals: List<Meal>)
+import com.squareup.moshi.JsonClass
 
-
+@JsonClass(generateAdapter = true)
+data class MealResponse(
+    val meals: List<Meal>
+)
 data class Meal(
     var idMeal: String,
     var strMeal: String,
