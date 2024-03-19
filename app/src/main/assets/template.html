@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{{Title}} Recipe PDF</title>
+
+</head>
+
+<script>
+    let listItems = document.querySelectorAll('li');
+    listItems.forEach(item => {
+        if (item.textContent.trim().length === 1) {
+            item.style.display = 'none';
+        }
+    });
+</script>
+
+<body>
+    <div class="content">
+        <h1
+            style="color: white; background-color: rgb(164, 94, 7); text-align: center; font-weight: bold; font-size: 100px;">
+            {{Title}}</h1>
+        <p style="color: black; font-style: italic; text-align: right;">Tags: {{Tags}}</p>
+
+        <div style="background-color: rgba(128, 128, 128, 0.8); flex: 1;">
+            <h1 style="color: white; margin-left: 15px;">Ingredients</h1>
+            <ul style="color: white; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+                <li>{{strIngredient1}}</li>
+                <li>{{strIngredient2}}</li>
+                <li>{{strIngredient3}}</li>
+                <li>{{strIngredient4}}</li>
+                <li>{{strIngredient5}}</li>
+                <li>{{strIngredient6}}</li>
+                <li>{{strIngredient7}}</li>
+                <li>{{strIngredient8}}</li>
+                <li>{{strIngredient9}}</li>
+                <li>{{strIngredient10}}</li>
+                <li>{{strIngredient11}}</li>
+                <li>{{strIngredient12}}</li>
+                <li>{{strIngredient13}}</li>
+                <li>{{strIngredient14}}</li>
+                <li>{{strIngredient15}}</li>
+                <li>{{strIngredient16}}</li>
+                <li>{{strIngredient17}}</li>
+                <li>{{strIngredient18}}</li>
+                <li>{{strIngredient19}}</li>
+                <li>{{strIngredient20}}</li>
+            </ul>
+        </div>
+
+        <div style="background-color: rgba(128, 128, 128, 0.8); flex: 1;">
+            <h1 style="color: white; margin-left: 15px;">Instructions</h1>
+            <p style="color: white; margin-left: 20px;">
+                {{Instructions}}
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>
