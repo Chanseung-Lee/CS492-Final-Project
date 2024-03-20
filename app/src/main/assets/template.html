@@ -3,17 +3,7 @@
 
 <head>
     <title>{{Title}} Recipe PDF</title>
-
 </head>
-
-<script>
-    let listItems = document.querySelectorAll('li');
-    listItems.forEach(item => {
-        if (item.textContent.trim().length === 1) {
-            item.style.display = 'none';
-        }
-    });
-</script>
 
 <body>
     <div class="content">
@@ -25,26 +15,26 @@
         <div style="background-color: rgba(128, 128, 128, 0.8); flex: 1;">
             <h1 style="color: white; margin-left: 15px;">Ingredients</h1>
             <ul style="color: white; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
-                <li>{{strIngredient1}}</li>
-                <li>{{strIngredient2}}</li>
-                <li>{{strIngredient3}}</li>
-                <li>{{strIngredient4}}</li>
-                <li>{{strIngredient5}}</li>
-                <li>{{strIngredient6}}</li>
-                <li>{{strIngredient7}}</li>
-                <li>{{strIngredient8}}</li>
-                <li>{{strIngredient9}}</li>
-                <li>{{strIngredient10}}</li>
-                <li>{{strIngredient11}}</li>
-                <li>{{strIngredient12}}</li>
-                <li>{{strIngredient13}}</li>
-                <li>{{strIngredient14}}</li>
-                <li>{{strIngredient15}}</li>
-                <li>{{strIngredient16}}</li>
-                <li>{{strIngredient17}}</li>
-                <li>{{strIngredient18}}</li>
-                <li>{{strIngredient19}}</li>
-                <li>{{strIngredient20}}</li>
+                {{strIngredient1}}
+                {{strIngredient2}}
+                {{strIngredient3}}
+                {{strIngredient4}}
+                {{strIngredient5}}
+                {{strIngredient6}}
+                {{strIngredient7}}
+                {{strIngredient8}}
+                {{strIngredient9}}
+                {{strIngredient10}}
+                {{strIngredient11}}
+                {{strIngredient12}}
+                {{strIngredient13}}
+                {{strIngredient14}}
+                {{strIngredient15}}
+                {{strIngredient16}}
+                {{strIngredient17}}
+                {{strIngredient18}}
+                {{strIngredient19}}
+                {{strIngredient20}}
             </ul>
         </div>
 

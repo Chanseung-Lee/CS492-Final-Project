@@ -22,10 +22,7 @@ import android.content.ContentValues
 import android.os.Build
 import android.os.Environment
 import android.provider.MediaStore
-
 import java.io.IOException
-
-
 import java.io.OutputStream
 
 class MealDetailFragment : Fragment(R.layout.fragment_meal_detail) {
@@ -156,31 +153,31 @@ class MealDetailFragment : Fragment(R.layout.fragment_meal_detail) {
 
         val meal = selectedMeal ?: return
 
+
         val modifiedHtmlContent = htmlTemplate
             .replace("{{Title}}", meal.strMeal)
-            .replace("{{Image}}", "${meal.strMealThumb}")
             .replace("{{Tags}}", "${meal.strArea} · ${meal.strCategory} · ${meal.strTags}")
             .replace("{{Instructions}}", "${meal.strInstructions}")
-            .replace("{{strIngredient1}}", "${meal.strIngredient1 ?: ""}: ${meal.strMeasure1 ?: ""}")
-            .replace("{{strIngredient2}}", "${meal.strIngredient2 ?: ""}: ${meal.strMeasure2 ?: ""}")
-            .replace("{{strIngredient3}}", "${meal.strIngredient3 ?: ""}: ${meal.strMeasure3 ?: ""}")
-            .replace("{{strIngredient4}}", "${meal.strIngredient4 ?: ""}: ${meal.strMeasure4 ?: ""}")
-            .replace("{{strIngredient5}}", "${meal.strIngredient5 ?: ""}: ${meal.strMeasure5 ?: ""}")
-            .replace("{{strIngredient6}}", "${meal.strIngredient6 ?: ""}: ${meal.strMeasure6 ?: ""}")
-            .replace("{{strIngredient7}}", "${meal.strIngredient7 ?: ""}: ${meal.strMeasure7 ?: ""}")
-            .replace("{{strIngredient8}}", "${meal.strIngredient8 ?: ""}: ${meal.strMeasure8 ?: ""}")
-            .replace("{{strIngredient9}}", "${meal.strIngredient9 ?: ""}: ${meal.strMeasure9 ?: ""}")
-            .replace("{{strIngredient10}}", "${meal.strIngredient10 ?: ""}: ${meal.strMeasure10 ?: ""}")
-            .replace("{{strIngredient11}}", "${meal.strIngredient11 ?: ""}: ${meal.strMeasure11 ?: ""}")
-            .replace("{{strIngredient12}}", "${meal.strIngredient12 ?: ""}: ${meal.strMeasure12 ?: ""}")
-            .replace("{{strIngredient13}}", "${meal.strIngredient13 ?: ""}: ${meal.strMeasure13 ?: ""}")
-            .replace("{{strIngredient14}}", "${meal.strIngredient14 ?: ""}: ${meal.strMeasure14 ?: ""}")
-            .replace("{{strIngredient15}}", "${meal.strIngredient15 ?: ""}: ${meal.strMeasure15 ?: ""}")
-            .replace("{{strIngredient16}}", "${meal.strIngredient16 ?: ""}: ${meal.strMeasure16 ?: ""}")
-            .replace("{{strIngredient17}}", "${meal.strIngredient17 ?: ""}: ${meal.strMeasure17 ?: ""}")
-            .replace("{{strIngredient18}}", "${meal.strIngredient18 ?: ""}: ${meal.strMeasure18 ?: ""}")
-            .replace("{{strIngredient19}}", "${meal.strIngredient19 ?: ""}: ${meal.strMeasure19 ?: ""}")
-            .replace("{{strIngredient20}}", "${meal.strIngredient20 ?: ""}: ${meal.strMeasure20 ?: ""}")
+            .replace("{{strIngredient1}}", if (meal.strIngredient1.isNullOrEmpty()) "" else "<li>${meal.strIngredient1}: ${meal.strMeasure1 ?: ""}</li>")
+            .replace("{{strIngredient2}}", if (meal.strIngredient2.isNullOrEmpty()) "" else "<li>${meal.strIngredient2}: ${meal.strMeasure2 ?: ""}</li>")
+            .replace("{{strIngredient3}}", if (meal.strIngredient3.isNullOrEmpty()) "" else "<li>${meal.strIngredient3}: ${meal.strMeasure3 ?: ""}</li>")
+            .replace("{{strIngredient4}}", if (meal.strIngredient4.isNullOrEmpty()) "" else "<li>${meal.strIngredient4}: ${meal.strMeasure4 ?: ""}</li>")
+            .replace("{{strIngredient5}}", if (meal.strIngredient5.isNullOrEmpty()) "" else "<li>${meal.strIngredient5}: ${meal.strMeasure5 ?: ""}</li>")
+            .replace("{{strIngredient6}}", if (meal.strIngredient6.isNullOrEmpty()) "" else "<li>${meal.strIngredient6}: ${meal.strMeasure6 ?: ""}</li>")
+            .replace("{{strIngredient7}}", if (meal.strIngredient7.isNullOrEmpty()) "" else "<li>${meal.strIngredient7}: ${meal.strMeasure7 ?: ""}</li>")
+            .replace("{{strIngredient8}}", if (meal.strIngredient8.isNullOrEmpty()) "" else "<li>${meal.strIngredient8}: ${meal.strMeasure8 ?: ""}</li>")
+            .replace("{{strIngredient9}}", if (meal.strIngredient9.isNullOrEmpty()) "" else "<li>${meal.strIngredient9}: ${meal.strMeasure9 ?: ""}</li>")
+            .replace("{{strIngredient10}}", if (meal.strIngredient10.isNullOrEmpty()) "" else "<li>${meal.strIngredient10}: ${meal.strMeasure10 ?: ""}</li>")
+            .replace("{{strIngredient11}}", if (meal.strIngredient11.isNullOrEmpty()) "" else "<li>${meal.strIngredient11}: ${meal.strMeasure11 ?: ""}</li>")
+            .replace("{{strIngredient12}}", if (meal.strIngredient12.isNullOrEmpty()) "" else "<li>${meal.strIngredient12}: ${meal.strMeasure12 ?: ""}</li>")
+            .replace("{{strIngredient13}}", if (meal.strIngredient13.isNullOrEmpty()) "" else "<li>${meal.strIngredient13}: ${meal.strMeasure13 ?: ""}</li>")
+            .replace("{{strIngredient14}}", if (meal.strIngredient14.isNullOrEmpty()) "" else "<li>${meal.strIngredient14}: ${meal.strMeasure14 ?: ""}</li>")
+            .replace("{{strIngredient15}}", if (meal.strIngredient15.isNullOrEmpty()) "" else "<li>${meal.strIngredient15}: ${meal.strMeasure15 ?: ""}</li>")
+            .replace("{{strIngredient16}}", if (meal.strIngredient16.isNullOrEmpty()) "" else "<li>${meal.strIngredient16}: ${meal.strMeasure16 ?: ""}</li>")
+            .replace("{{strIngredient17}}", if (meal.strIngredient17.isNullOrEmpty()) "" else "<li>${meal.strIngredient17}: ${meal.strMeasure17 ?: ""}</li>")
+            .replace("{{strIngredient18}}", if (meal.strIngredient18.isNullOrEmpty()) "" else "<li>${meal.strIngredient18}: ${meal.strMeasure18 ?: ""}</li>")
+            .replace("{{strIngredient19}}", if (meal.strIngredient19.isNullOrEmpty()) "" else "<li>${meal.strIngredient19}: ${meal.strMeasure19 ?: ""}</li>")
+            .replace("{{strIngredient20}}", if (meal.strIngredient20.isNullOrEmpty()) "" else "<li>${meal.strIngredient20}: ${meal.strMeasure20 ?: ""}</li>")
 
 
         Log.d("Log1", "${meal.strMealThumb}")
@@ -202,7 +199,9 @@ class MealDetailFragment : Fragment(R.layout.fragment_meal_detail) {
     }
 
     private fun createPdfFromHtml(context: Context, htmlContent: String) {
-        val pdfFileName = "myPdf_${System.currentTimeMillis()}.pdf"
+        val meal = selectedMeal ?: return
+
+        val pdfFileName = "${meal.strMeal}_Recipe.pdf"
 
         try {
             val outputStream: OutputStream
@@ -233,4 +232,5 @@ class MealDetailFragment : Fragment(R.layout.fragment_meal_detail) {
             e.printStackTrace()
         }
     }
+
 }
