@@ -80,5 +80,6 @@ dependencies {
 
     implementation("com.itextpdf:itext7-core:7.1.9")
     implementation("com.itextpdf:html2pdf:3.0.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 
 }
